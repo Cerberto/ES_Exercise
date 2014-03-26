@@ -1,0 +1,48 @@
+In this exercise we discuss how to write a small program to calculate
+the band structure of semiconductors by the Cohen and Bergstresser method,
+Phys. Rev. 141, 789 (1966).
+
+We discuss the following subroutines:
+
+cb.f90                ! The main driver program
+cbmod.f90             ! contains the data structures of the program             
+
+input_cb.f90          ! the input routine. Reads the information on the k path
+set_lattice.f90       ! calculate the direct and reciprocal lattice vectors
+ggen.f90              ! calculate the list of G vectors and order them   
+set_cb_parameters.f90 ! set the parameters of the pseudopotentials
+set_hamiltonian.f90   ! set the Hamiltonian in the plane waves basis at each k
+diagonalize.f90       ! diagonalize the Hamiltonian using lapack routines     
+deallocate_hamiltonian.f90  Deallocation of the main Hamiltonian arrays
+deallocate_all.f90          deallocate all the rest
+                  
+Then we need a few auxiliary routines copied from QE:
+
+hpsort.f90   To order the G vectors
+recips.f90   To calculate the reciprocal lattice vectors
+kind.f90     The kind of the real numbers 
+constants.f90 A few constants
+
+zheevx.html : the man page of the zheevx routine used to diagonalize the
+Hamiltonian.
+
+To compile it you need a fortran90 compiler, such as gfortran, and
+compiled blas and lapack libraries.
+
+Modify the file 'src/compile' to link with the blas and lapack of your 
+installation or to use a compiler different from gfortran.
+
+If your machine has not the lapack and blas libraries installed,
+you can build them by entering the src directory and typing
+
+tar -xzvf lapack-3.2.tar.gz
+
+entering in the lapack-3.2 directory and giving the commands:
+
+cp make.inc.example make.inc
+make blaslib
+make lapacklib
+
+To compile enter in src and type . compile.
+To run the code enter the inputs directory and type
+../src/cb.x < input_? 

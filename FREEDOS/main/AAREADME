@@ -1,0 +1,31 @@
+In this exercise we discuss how to write a small program to calculate
+the density of states of free electrons modifying the program illustrated in
+LECTURE3 3.
+
+We discuss the following subroutines:
+
+free_dos.f90        ! the main code
+freemod.f90         ! the data structure
+input_free.f90      ! the input routine. Reads the information on the k path
+accumulate_dos.f90  ! calculates the eigenvalues
+deallocate_all.f90  ! deallocate variables
+                  
+For a discussion of the other routines see previous lecture.
+To compile it you need a fortran90 compiler, such as gfortran.
+Enter in the directory src, change the file compile if you use a compiler 
+different from gfortran, and type . compile.
+To run the code enter in the directory inputs and type:
+../src/free_dos.x < input_? 
+The output will appear in the file output.
+To clean all outputs type . clean.
+
+There are several inputs:
+
+input_sc_dos   shows a simple input to obtain the dos of free electrons
+TEST/test.sh   make a simple script to check the convergence of the DOS
+               as a function of k points and sigma for three values of 
+               the energy.
+input_fcc_dos  show an input to obtain the dos of free electrons using
+               the free electron bands for the fcc lattice.
+input_sc_2d    show the 2D dos fixing k_z=0 and integrating in the plane.
+input_sc_1d    show the 1D dos fixing k_y=k_z=0 and integrating along a line.

@@ -1,0 +1,43 @@
+set encoding iso_8859_15
+set terminal postscript enhanced solid color "Helvetica" 20
+set output "fcc.ps"
+set key off
+
+set xrange [0:4.4873]
+dim1=0
+dim2=4.5
+small=0.12
+set yrange [dim1:dim2]
+set arrow from 1.0,dim1 to 1.0,dim2 nohead lw 2
+set arrow from 1.5,dim1 to 1.5,dim2 nohead lw 2
+set arrow from 2.2071,dim1 to 2.2071,dim2 nohead lw 2
+set arrow from 3.0731,dim1 to 3.0731,dim2 nohead lw 2
+set arrow from 4.1338,dim1 to 4.1338,dim2 nohead lw 1
+set label "{/Symbol G}" at -0.05,dim1-small
+set label "X" at 0.95,dim1-small
+set label "W" at 1.45,dim1-small
+set label "L" at 2.16,dim1-small
+set label "{/Symbol G}" at 3.02,dim1-small
+set label "K" at 4.08,dim1-small
+set label "X" at 4.43,dim1-small
+fact=1.0
+emax=0.0
+set ylabel "Energy (Ry / (2{/Symbol p}/a)^2)"
+set noxtic
+plot 'output' u 1:($2*fact-emax) w l lw 3 lc rgb "red" 
+replot 'output' u 1:($3*fact-emax) w l lw 3 lc rgb "red"
+replot 'output' u 1:($4*fact-emax) w l lw 3 lc rgb "red"
+replot 'output' u 1:($5*fact-emax) w l lw 3 lc rgb "red"
+replot 'output' u 1:($6*fact-emax) w l lw 3 lc rgb "red"
+replot 'output' u 1:($7*fact-emax) w l lw 3 lc rgb "red"
+replot 'output' u 1:($8*fact-emax) w l lw 3 lc rgb "red"
+replot 'output' u 1:($9*fact-emax) w l lw 3 lc rgb "red"
+replot 'output' u 1:($10*fact-emax) w l lw 3 lc rgb "red"
+replot 'output' u 1:($11*fact-emax) w l lw 3 lc rgb "red"
+replot 'output' u 1:($12*fact-emax) w l lw 3 lc rgb "red"
+replot 'output' u 1:($13*fact-emax) w l lw 3 lc rgb "red"
+replot 'output' u 1:($14*fact-emax) w l lw 3 lc rgb "red"
+replot 'output' u 1:($15*fact-emax) w l lw 3 lc rgb "red"
+replot 'output' u 1:($16*fact-emax) w l lw 3 lc rgb "red"
+replot 'output' u 1:($17*fact-emax) w l lw 3 lc rgb "red"
+replot 'output' u 1:($18*fact-emax) w l lw 3 lc rgb "red"

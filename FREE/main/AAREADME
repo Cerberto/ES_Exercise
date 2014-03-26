@@ -1,0 +1,27 @@
+In this exercise we discuss how to write a small program to calculate
+the band structure of free electrons.
+
+We discuss the following subroutines:
+
+free.f90             ! The main driver program
+freemod.f90          ! contains the data structures of the program             
+input_free.f90       ! the input routine. Reads the information on the k path
+set_lattice.f90      ! calculates the direct and reciprocal lattice vectors
+calculate_radius.f90 ! calculates the radius of the G sphere that
+                     ! contains all the spheres |k+G|^2 < Ecut 
+ggen.f90             ! calculates the list of G vectors    
+set_hamiltonian.f90  ! calculates the eigenvalues
+deallocate_all.f90   ! deallocate variables
+                  
+Then we need a few auxiliary routines copied from QE:
+
+hpsort.f90   To order the k + G vectors
+recips.f90   To calculate the reciprocal lattice vectors
+kind.f90     The kind of the real numbers 
+
+To compile it you need a fortran90 compiler, such as gfortran.
+Enter in src, change the file compile if you use a compiler different from
+gfortran, and type compile.
+To run the code enter in the directory inputs and type:
+../src/free.x < input_? 
+The output will appear in the file output.
