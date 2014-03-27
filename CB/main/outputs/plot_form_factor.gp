@@ -11,7 +11,11 @@ A2 = 2.0997
 A3 = 2.9779
 A4 = 2.6524
 
+a0 = 0.52917720859
+
+scale = 8.0/A2;
+
 f(x) = A1*(x - A2)/(exp(A3*(x - A4)) + 1)
 
-plot f(x) w l , \
+plot 2*f(x/scale) w l , \
 	'form_factors' w p
