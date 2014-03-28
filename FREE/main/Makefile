@@ -19,10 +19,9 @@ MAIN = free
 
 # required modules
 
-ROUTINES = freemod  deallocate_all  input_free
+ROUTINES = freemod  deallocate_all  input_free  ggen_free
 
-GLOBAL = kind  set_lattice  recips  set_hamiltonian  calculate_radius  hpsort \
-		 ggen_free
+GLOBAL = kind  set_lattice  recips  set_hamiltonian  calculate_radius  hpsort
 
 MODULES = $(GLOBAL)  $(ROUTINES)
 

@@ -4,8 +4,12 @@ set output "si.eps"
 set key off
 
 set xrange [0:3.2802]
-dim1=-3.5
-dim2=2.5
+#dim1=-3.5
+#dim2=2.5
+
+dim1=-5
+dim2=11.5
+set grid
 set yrange [dim1:dim2]
 small=0.2
 set label "Si" at 3.1,6

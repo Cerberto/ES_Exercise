@@ -19,11 +19,11 @@ MAIN = cb_charge
 
 # required modules
 
-ROUTINES =  cbmod  accumulate_charge  kgen \
+ROUTINES =  cbmod  accumulate_charge  kgen  ggen_cb\
 	deallocate_hamiltonian  diagonalize  input_cb  deallocate_all \
 	set_cb_parameters  set_hamiltonian
 
-GLOBAL = kind  constants  set_lattice  recips  calculate_radius  ggen_cb
+GLOBAL = kind  constants  set_lattice  recips  calculate_radius
 
 MODULES = $(GLOBAL)  $(ROUTINES)
 
