@@ -19,11 +19,11 @@ MAIN = cb
 
 # required modules
 
-ROUTINES =  cbmod  diagonalize \
+ROUTINES =  cbmod  diagonalize  ggen_cb \
 	set_hamiltonian  input_cb  deallocate_all \
 	deallocate_hamiltonian  set_cb_parameters
 	
-GLOBAL = kind  constants  set_lattice  recips  calculate_radius  ggen_cb
+GLOBAL = kind  constants  set_lattice  recips  calculate_radius
 
 MODULES = $(GLOBAL)  $(ROUTINES)
 

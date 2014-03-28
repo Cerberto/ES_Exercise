@@ -55,13 +55,19 @@ ALLOCATE(wk(nks))
 
 IF (nks_dum==1) THEN
    xk(:,1) = xk_dum(:,1)
-   wk(1) = nk_dum(1)
+   wk(1) = nk_dum(1)    ! it can be any number (in the plot it does not matter)
 ELSE
+   ! set the first point in the plot of the energy bands
    nks=1
-   xk(:,nks)=xk_dum(:,1)
-   wk(nks)= 0.0_DP
+   xk(:,nks)=xk_dum(:,1)   ! it is the one specified at first line of input file
+   wk(nks)= 0.0_DP         ! this is the ascissa of first point in the plot
    DO ik=1,nks_dum-1
       IF (nk_dum(ik) > 0 ) THEN
+         ! if in the input file it is specified a positive number of k-points to
+         ! get to the next one, then I partition the line between the current
+         ! k-point and the next one in such a number of sub-intervals;
+         ! the spacing between two successive points on the plot is the length
+         ! of delta_k (or, the width of the sub-intervals)
          delta_k(:) = (xk_dum(:,ik+1)-xk_dum(:,ik))/nk_dum(ik)
          xkmod=SQRT(delta_k(1)**2+delta_k(2)**2+delta_k(3)**2)
          DO jk=1, nk_dum(ik)
@@ -70,6 +76,9 @@ ELSE
             wk(nks) = wk(nks-1) + xkmod
          ENDDO
       ELSE
+         ! if the specified # of steps to get to the next k-point is 0 (actually
+         ! non-sense) then I make the two k-points (the current and the next)
+         ! coincide
          nks=nks+1
          xk(:,nks) = xk_dum(:,ik+1)
          wk(nks) = wk(nks-1)
