@@ -59,6 +59,15 @@ SUBROUTINE recips (at, bg)
   write(6,'(3x,"b2=(", 2(f15.5,","),f15.5, " )")') bg(:,2) 
   write(6,'(3x,"b3=(", 2(f15.5,","),f15.5, " )")') bg(:,3) 
   write(6,*)
+  
+  OPEN(unit=11,file='outputs/rec_lat_vecs',status='unknown')
+  !,err=100,iostat=ios)
+  !100 IF (ios /= 0) STOP 'opening output'
+  write(11,'(3x,"b1=(", 2(f15.5,","),f15.5, " )")') bg(:,1) 
+  write(11,'(3x,"b2=(", 2(f15.5,","),f15.5, " )")') bg(:,2) 
+  write(11,'(3x,"b3=(", 2(f15.5,","),f15.5, " )")') bg(:,3)
+  call flush (11)
+  close(11)
 
   RETURN
 END SUBROUTINE recips

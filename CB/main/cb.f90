@@ -28,11 +28,11 @@ CALL set_cb_parameters(crystal_name)
 !
 ! set the direct and reciprocal lattice vectors of the fcc lattice
 !
-! CALL set_lattice(at, bg, 'fcc')
+!CALL set_lattice(at, bg, 'fcc')
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ! Set lattice for the centered tetragonal Beta-tin
-  CALL set_lattice(at, bg, 'ctbt')
+CALL set_lattice(at, bg, 'ct')
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !

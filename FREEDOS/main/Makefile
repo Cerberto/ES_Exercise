@@ -19,9 +19,11 @@ MAIN = free_dos
 
 # required modules
 
-ROUTINES = freemod  gaussian  kgen  deallocate_all  input_free  ggen_free
+ROUTINES = freemod  gaussian  kgen  deallocate_all  input_free  ggen_free  \
+		fermi_level  set_hamiltonian
 
-GLOBAL = kind  set_lattice  recips  set_hamiltonian  calculate_radius  hpsort
+GLOBAL = kind  constants  set_lattice  recips  \
+		calculate_radius  hpsort
 
 MODULES = $(GLOBAL)  $(ROUTINES)
 

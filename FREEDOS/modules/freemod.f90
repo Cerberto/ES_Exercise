@@ -34,7 +34,8 @@ LOGICAL :: ldos                  ! true if compute dos
 INTEGER :: nk1, nk2, nk3         ! the mesh of k points
 INTEGER :: nenergy               ! number of energy points
 
-REAL(DP) :: sigma, emin, emax    ! a real number
+REAL(DP) :: sigma                ! width of the gaussian representing the delta
+REAL(DP) :: emin, emax           ! min and max value of energy for dos
 REAL(DP), ALLOCATABLE :: dos(:)  ! The density of states
 
 

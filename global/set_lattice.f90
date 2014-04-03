@@ -35,7 +35,7 @@ ELSEIF (lattice_type=='BCC' .OR. lattice_type=='bcc') THEN
    at(1,3)=0.5_DP
    at(2,3)=0.5_DP
    at(3,3)=-0.5_DP
-ELSEIF (lattice_type=='CTBT' .OR. lattice_type=='ctbt') THEN
+ELSEIF (lattice_type=='CT' .OR. lattice_type=='ct') THEN
    at(1,1)=-0.5_DP
    at(2,1)=0.5_DP
    at(3,1)=0.5_DP

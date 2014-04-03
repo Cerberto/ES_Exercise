@@ -1,6 +1,6 @@
 set encoding iso_8859_15
-set terminal postscript enhanced solid color "Helvetica" 20
-set output "gaas.ps"
+set terminal postscript eps enhanced solid color "Helvetica" 20
+set output "gaas.eps"
 set key off
 
 set xrange [0:3.2802]

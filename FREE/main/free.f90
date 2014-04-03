@@ -37,7 +37,7 @@ CALL ggen(gcutm2)
 !
 ! open the output file
 !
-OPEN(unit=26,file='output',status='unknown',err=100,iostat=ios)
+OPEN(unit=26,file='outputs/output',status='unknown',err=100,iostat=ios)
 100 IF (ios /= 0) STOP 'opening output'
 ALLOCATE(et(1:nbnd))
 DO ik=1, nks

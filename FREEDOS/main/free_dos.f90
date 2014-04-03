@@ -11,8 +11,8 @@ USE freemod, ONLY : lattice_name, at, bg, ecut, gcutm2,  &
                     sigma, nk1, nk2, nk3, dos
 IMPLICIT NONE
 INTEGER :: ik, npw, iener, ibnd, ios
-REAL(DP) :: ener, deltae
-REAL(DP), EXTERNAL :: gaussian
+REAL(DP) :: ener, deltae, f_en
+REAL(DP), EXTERNAL :: gaussian, fermi_level
 !
 !  Read the input
 !
@@ -48,7 +48,7 @@ IF (ldos) THEN
       nenergy=1
    ENDIF
 ELSE
-   OPEN(unit=26,file='output',status='unknown',err=100,iostat=ios)
+   OPEN(unit=26,file='outputs/output',status='unknown',err=100,iostat=ios)
    100 IF (ios /= 0) STOP 'opening output'
 ENDIF
 ALLOCATE(et(1:nbnd))
@@ -82,13 +82,15 @@ IF (nks==1) THEN
 ENDIF
 
 IF (ldos) THEN
-   OPEN(unit=26,file='output',status='unknown',err=200,iostat=ios)
+   OPEN(unit=26,file='outputs/output_dos',status='unknown',err=200,iostat=ios)
    200 IF (ios /= 0) STOP 'opening output'
    dos=dos/nks
    DO iener=1,nenergy
       ener=emin+deltae*(iener-1)
       WRITE(26,'(50f10.4)') ener, dos(iener)
    ENDDO
+   f_en = fermi_level(emin, emax, 0.1_dp, npw, nks)
+   write (6,'("Fermi energy in units Ry / (2\pi/a)**2: ", f5.3)') f_en
 ENDIF
 
 CALL deallocate_all()
