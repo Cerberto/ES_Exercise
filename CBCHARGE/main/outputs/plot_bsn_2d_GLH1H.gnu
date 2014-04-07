@@ -2,41 +2,44 @@
 #
 #  define here the size of the mesh
 #
-nxp=50
+nxp=80
 nyp=50
 #
 #  set three levels red, three levels blue, three levels green. Set them
 #  equal or outside the range for the levels that you do not need
 #
-levr1=14
-levr2=12
-levr3=10
+levr1=
+levr2=200
+levr3=200
 
-levb1=8
-levb2=6
-levb3=4
+levb1=200
+levb2=200
+levb3=200
 
-levg1=2
+levg1=4
 levg2=200
 levg3=200
 #
 #  Set here the lattice constant if you want the output in a.u.
 #
-alat=10.26
+alat=10.95
 #
-#  define here the ratio between the size along x and y of the picture
+#  define here the ratio between the size along y and x of the picture
 #
-ratiopicture=1.0
+sqrt2=sqrt(2.0)
+ratiopicture=1.0/sqrt2
 #
 #  put here labels
 #
 set label "Si" at 0.2,0.2 center
-set label "Si" at 0.5*alat,0.5*alat center
+set label "Si" at 0.25*alat*sqrt2,0.25*alat center
+set label "Si" at 0.75*alat*sqrt2,0.25*alat center
+set label "Si" at 0.5*alat*sqrt2,0.2 center
 #
 #  This is the name of the file that will contain the postscript file of the
 #  plot
 #
-plot_label='charge_si_2d_001.ps'
+plot_label='charge_bsn_2d_GXH1H.eps'
 #
 # --------------------------------------------------------------------------
 #   Do not change anything below this line
@@ -70,7 +73,7 @@ unset table
 #  Now define a postcript terminal called label_plot
 #
 set encoding iso_8859_15
-set terminal postscript enhanced solid color "Helvetica" 20
+set terminal postscript eps enhanced solid color "Helvetica" 20
 set output plot_label
 
 set size ratio ratiopicture

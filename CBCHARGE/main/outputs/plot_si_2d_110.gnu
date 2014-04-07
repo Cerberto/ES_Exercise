@@ -39,7 +39,7 @@ set label "Si" at 0.5*alat*sqrt2,0.2 center
 #  This is the name of the file that will contain the postscript file of the
 #  plot
 #
-plot_label='charge_si_2d_110.ps'
+plot_label='charge_si_2d_110.eps'
 #
 # --------------------------------------------------------------------------
 #   Do not change anything below this line
@@ -73,7 +73,7 @@ unset table
 #  Now define a postcript terminal called label_plot
 #
 set encoding iso_8859_15
-set terminal postscript enhanced solid color "Helvetica" 20
+set terminal postscript eps enhanced solid color "Helvetica" 20
 set output plot_label
 
 set size ratio ratiopicture

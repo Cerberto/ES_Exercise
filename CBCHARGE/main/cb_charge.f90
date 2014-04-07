@@ -19,6 +19,12 @@ USE cbmod, ONLY : crystal_name, at, bg, ecut, gcutm2, nks, xk, npw, &
                   nk1, nk2, nk3, rho, alat, dimen, rx, ry, nir_x, nir_y
 IMPLICIT NONE
 INTEGER :: ik, ios, ibnd, jbnd, ir, jr, ijr
+
+real(dp) :: emin, emax, f_en
+real(dp), external :: fermi_level
+emin = -2.0_dp
+emax = 200.0_dp
+
 !
 !  Read the input
 !
@@ -30,7 +36,11 @@ CALL set_cb_parameters(crystal_name)
 !
 ! set the direct and reciprocal lattice vectors of the fcc lattice
 !
-CALL set_lattice(at, bg, 'fcc')
+IF (crystal_name == "bSn") THEN
+    CALL set_lattice(at, bg, 'ct')
+ELSE
+    CALL set_lattice(at, bg, 'fcc')
+END IF
 !
 ! set the coordinates of the mesh of k points
 !
@@ -48,7 +58,7 @@ CALL ggen(gcutm2)
 !
 ! open the output file
 !
-OPEN(unit=26,file='output',status='unknown',err=100,iostat=ios)
+OPEN(unit=26,file='outputs/output',status='unknown',err=100,iostat=ios)
 100 IF (ios /= 0) STOP 'opening output'
 !
 !  For all k points compute and diagonalize the Hamiltonian
@@ -74,6 +84,13 @@ DO ik=1, nks
 !
    CALL deallocate_hamiltonian()
 ENDDO
+
+!
+!   calculate the Fermi level
+!
+f_en = fermi_level(emin, emax, 0.1_dp)
+write (6,'("Fermi energy in units Ry / (2\pi/a)**2: ", f7.3)') f_en
+
 !
 !   write on output the charge density
 !

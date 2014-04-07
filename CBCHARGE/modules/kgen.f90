@@ -22,7 +22,8 @@ DO i=1, n1
    DO j=1, n2
       DO k=1, n3
          ik = ik + 1
-         xk(:,ik) = (i-1) * bg(:,1) / n1 + (j-1) * bg(:,2) / n2 +  &
+         xk(:,ik) = (i-1) * bg(:,1) / n1 +  &
+                    (j-1) * bg(:,2) / n2 +  &
                     (k-1) * bg(:,3) / n3
       ENDDO
    ENDDO

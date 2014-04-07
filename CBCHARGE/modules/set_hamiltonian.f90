@@ -79,7 +79,7 @@ DO i=1, npw
 !  H is an hermitean operator, but the diagonalization routine does not
 !  need the lower part
 !
-!         h(j,i)   = CONJG(h(i,j))
+         h(j,i)   = CONJG(h(i,j))
       END IF
    END DO
 END DO

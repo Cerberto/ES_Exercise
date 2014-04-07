@@ -51,7 +51,6 @@ CASE ('InSb')
    cbi_parameters(4) =  0.05_DP
    cbi_parameters(11)=  0.01_DP
    alat = 6.48_DP * aa_to_au
-! Needed for Beta-tin ?!
 CASE ('bSn')
    cbr_parameters(3) = -0.17_DP
    cbr_parameters(8) =  0.04_DP

@@ -21,7 +21,7 @@ MAIN = cb_charge
 
 ROUTINES =  cbmod  accumulate_charge  kgen  ggen_cb\
 	deallocate_hamiltonian  diagonalize  input_cb  deallocate_all \
-	set_cb_parameters  set_hamiltonian
+	set_cb_parameters  set_hamiltonian  fermi_level
 
 GLOBAL = kind  constants  set_lattice  recips  calculate_radius
 

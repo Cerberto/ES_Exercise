@@ -1,8 +1,8 @@
 #!/usr/bin/gnuplot
 
 set encoding iso_8859_15
-set terminal postscript enhanced solid color "Helvetica" 20
-set output "charge_si_111.ps"
+set terminal postscript eps enhanced solid color "Helvetica" 20
+set output "charge_si_111.eps"
 set key off
 
 alat=10.26
