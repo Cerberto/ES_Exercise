@@ -15,7 +15,7 @@ int main() {
     
     int i;
     double lspc = 5.8;
-    // double lspc = 6.49;
+    //double lspc = 6.49;
     double aa_to_au = 0.52917720859;
     double scale;
     scale = 8.0*atan(1.0)*aa_to_au/lspc;

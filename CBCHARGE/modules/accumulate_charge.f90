@@ -38,6 +38,7 @@ DO ibnd=1,nbnd_occ
          psic(ir)=psic(ir) + evc(ig,ibnd)*phase
       ENDDO
    ENDDO
+
 !
 !   2.0 accounts for spin degeneracy
 !

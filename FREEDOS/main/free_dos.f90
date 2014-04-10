@@ -12,7 +12,7 @@ USE freemod, ONLY : lattice_name, at, bg, ecut, gcutm2,  &
 IMPLICIT NONE
 INTEGER :: ik, npw, iener, ibnd, ios
 REAL(DP) :: ener, deltae, f_en
-REAL(DP), EXTERNAL :: gaussian, fermi_level
+REAL(DP), EXTERNAL :: gaussian
 !
 !  Read the input
 !
@@ -89,8 +89,6 @@ IF (ldos) THEN
       ener=emin+deltae*(iener-1)
       WRITE(26,'(50f10.4)') ener, dos(iener)
    ENDDO
-   f_en = fermi_level(emin, emax, 0.1_dp, npw, nks)
-   write (6,'("Fermi energy in units Ry / (2\pi/a)**2: ", f5.3)') f_en
 ENDIF
 
 CALL deallocate_all()

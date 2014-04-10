@@ -41,7 +41,7 @@ function fermi_level (xmin, xmax, acc, npw, Nk) result (fl)
         z = tobezero(fl, npw, Nk)
     
         if((z1*z)<0) then
-            xmin=fl
+            xmax=fl
             z2 = z
         else if((z1*z)>0) then
             xmin=fl

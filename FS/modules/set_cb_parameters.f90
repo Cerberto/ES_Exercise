@@ -12,7 +12,7 @@ SUBROUTINE set_cb_parameters (crystal_name)
 !
 USE kinds, ONLY : dp
 USE constants, ONLY : aa_to_au, pi
-USE cbmod, ONLY : cbr_parameters, cbi_parameters, tpiba2, alat, nbnd_occ
+USE fsmod, ONLY : cbr_parameters, cbi_parameters, tpiba2, alat, nbnd_occ
 IMPLICIT NONE
 CHARACTER (LEN=*), INTENT(IN)  :: crystal_name
 REAL(DP) :: tpiba
@@ -52,6 +52,9 @@ CASE ('InSb')
    cbi_parameters(11)=  0.01_DP
    alat = 6.48_DP * aa_to_au
 CASE ('bSn')
+   cbr_parameters(3) = -0.17_DP
+   cbr_parameters(8) =  0.01_DP
+   cbr_parameters(11)=  0.04_DP
    alat = 5.80_DP * aa_to_au
 CASE DEFAULT
    WRITE(6,*) 'set_cb_parameters'
@@ -62,6 +65,6 @@ END SELECT
 tpiba  = 2.0_DP * pi / alat
 tpiba2 = tpiba**2
 !
-nbnd_occ = 4
+nbnd_occ=4
 RETURN
 END SUBROUTINE set_cb_parameters

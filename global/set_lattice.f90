@@ -38,17 +38,19 @@ ELSEIF (lattice_type=='BCC' .OR. lattice_type=='bcc') THEN
 ELSEIF (lattice_type=='CT' .OR. lattice_type=='ct') THEN
    at(1,1)=-0.5_DP
    at(2,1)=0.5_DP
-   at(3,1)=0.5_DP
+   at(3,1)=0.5_DP*0.55_DP
    at(1,2)=0.5_DP
    at(2,2)=-0.5_DP
-   at(3,2)=0.5_DP
-   at(1,3)=0.5_DP*0.55_DP
-   at(2,3)=0.55_DP
+   at(3,2)=0.5_DP*0.55_DP
+   at(1,3)=0.5_DP
+   at(2,3)=0.5_DP
    at(3,3)=-0.5_DP*0.55_DP
 ELSE
    WRITE(6,'("Lattice type not programmed")')
    STOP 1
 ENDIF
+
+write(6,'("Lattice type : ", a5)') lattice_type
 
 CALL recips (at, bg)
 

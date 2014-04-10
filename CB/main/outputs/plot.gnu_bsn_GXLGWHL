@@ -1,0 +1,45 @@
+set encoding iso_8859_15
+set terminal postscript enhanced color font 'Helvetica,20'
+set output "bSn_GXLGWHL.ps"
+set key off
+
+#set xrange [0:1.41]
+#dim1=-3.5
+#dim2=2.5
+
+dim1=0
+dim2=1.3
+set grid
+set yrange [dim1:dim2]
+small=0.5/13.6
+set label "{/Symbol b}-Sn" at 1.2,7.3
+
+set arrow from .7100,dim1 to 0.7100,dim2 nohead lw 2
+set arrow from 1.414,dim1 to 1.4201,dim2 nohead lw 2
+set arrow from 2.414,dim1 to 2.4142,dim2 nohead lw 2
+set arrow from 3.0483,dim1 to 3.0483,dim2 nohead lw 2
+set arrow from 3.5982,dim1 to 3.5982,dim2 nohead lw 2
+
+set label "{/Symbol G}" at -.03,dim1-small
+set label "X" at 0.69,dim1-small
+set label "L" at 1.40,dim1-small
+set label "{/Symbol G}" at 2.4,dim1-small
+set label "W" at 2.9,dim1-small
+set label "H" at 3.5,dim1-small
+set label "L" at 5.0,dim1-small
+
+fact = 1.0
+#fact=13.605698
+emax=-0.1200 * fact
+#emax = 0
+set ylabel "Energy (Ry)"
+#set ylabel "Energy (eV)"
+set noxtic
+plot 'output' u 1:($2*fact-emax) w l lw 3 lc rgb "red"
+replot 'output' u 1:($3*fact-emax) w l lw 3 lc rgb "red"
+replot 'output' u 1:($4*fact-emax) w l lw 3 lc rgb "red"
+replot 'output' u 1:($5*fact-emax) w l lw 3 lc rgb "red"
+replot 'output' u 1:($6*fact-emax) w l lw 3 lc rgb "green"
+replot 'output' u 1:($7*fact-emax) w l lw 3 lc rgb "green"
+replot 'output' u 1:($8*fact-emax) w l lw 3 lc rgb "green"
+replot 'output' u 1:($9*fact-emax) w l lw 3 lc rgb "green"

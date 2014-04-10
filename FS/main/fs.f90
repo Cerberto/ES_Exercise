@@ -5,7 +5,7 @@
 ! in the root directory of the present distribution,
 ! or http://www.gnu.org/copyleft/gpl.txt .
 !
-PROGRAM cb
+PROGRAM fs
 !
 !  This program reads from input the name of a crystal (Si, Ge, Sn, GaAs,
 !  or InSb) and a path of k points in the fcc Brillouin zone, and writes 
@@ -14,8 +14,8 @@ PROGRAM cb
 !  Reference: Phys. Rev. 141, 789 (1966).
 !
 USE kinds, ONLY : dp
-USE cbmod, ONLY : crystal_name, at, bg, ecut, gcutm2, nks, xk, wk, npw, &
-                  ngm, nbnd, h, evc, et
+USE fsmod, ONLY : crystal_name, at, bg, ecut, gcutm2, nks, npw, &
+                  ngm, nbnd, h, evc, et, k_mesh
 IMPLICIT NONE
 INTEGER :: ik, ios
 
@@ -27,7 +27,7 @@ emax = 3.0_dp
 !
 !  Read the input
 !
-CALL input_cb()
+CALL input_fs()
 !
 ! set the cb parameters and the size of the unit cell
 !
@@ -45,45 +45,19 @@ END IF
 ! given ecut and the k-points, calculate the radius of the sphere in
 ! reciprocal space that contains all the necessary G vectors.
 !
-CALL calculate_radius(ecut, xk, nks, gcutm2)
+CALL calculate_radius(ecut, k_mesh, nks, gcutm2)
+
 !
 ! compute all the reciprocal lattice vectors within a sphere of radius
 ! sqrt(gcutm2)
 !
 CALL ggen(gcutm2)
-!
-! open the output file
-!
-OPEN(unit=26,file='outputs/output',status='unknown',err=100,iostat=ios)
-100 IF (ios /= 0) STOP 'opening output'
-!
-!  For all k points compute and diagonalize the Hamiltonian
-!
-DO ik=1, nks
-!
-!   set the Hamiltonian 
-!
-   CALL set_hamiltonian(xk(:,ik), ecut)
-!
-!   and diagonalize it. nbnd bands are calculated.
-!
-   CALL diagonalize(npw, nbnd, h, et, evc)
-!
-!   write on output the eigenvalues
-!
-   WRITE(26,'(50f10.4)') wk(ik), et(1:nbnd)
-!
-!  deallocate the Hamiltonian variables
-!
-   CALL deallocate_hamiltonian()
-ENDDO
 
 !
-!   calculate the Fermi energy
+!   print occupied bands on separate files
 !
-f_en = fermi_level(emin, emax, 0.0001_dp)
-WRITE (6,'("Fermi energy in units Ry / (2\pi/a)**2: ", f7.4)') f_en
+CALL print_bands()
 
 CALL deallocate_all()
 CLOSE(26)
-END PROGRAM cb
+END PROGRAM fs

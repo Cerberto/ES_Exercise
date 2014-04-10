@@ -5,7 +5,7 @@
 ! in the root directory of the present distribution,
 ! or http://www.gnu.org/copyleft/gpl.txt .
 !
-MODULE cbmod
+MODULE fsmod
 USE kinds, ONLY : DP
 
 IMPLICIT NONE
@@ -33,8 +33,8 @@ COMPLEX(DP), ALLOCATABLE :: h(:,:)   ! The Hamiltonian matrix
 COMPLEX(DP), ALLOCATABLE :: evc(:,:) ! The wavefunctions
 REAL(DP), ALLOCATABLE :: et(:)       ! The eigenvalues of the Hamiltonian
 
-INTEGER :: nks                       ! The number of k points
-REAL(DP), ALLOCATABLE :: xk(:,:)     ! The coordinates of the k points
-REAL(DP), ALLOCATABLE :: wk(:)       ! The xcoordinate of the k point for output
+INTEGER :: nks, nks_x, nks_y         ! The number of k points
+real(dp), allocatable :: k_mesh(:,:)
+real(dp), allocatable :: kx(:), ky(:)
 
-END MODULE cbmod
+END MODULE fsmod

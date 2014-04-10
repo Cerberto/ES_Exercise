@@ -20,11 +20,6 @@ USE cbmod, ONLY : crystal_name, at, bg, ecut, gcutm2, nks, xk, npw, &
 IMPLICIT NONE
 INTEGER :: ik, ios, ibnd, jbnd, ir, jr, ijr
 
-real(dp) :: emin, emax, f_en
-real(dp), external :: fermi_level
-emin = -2.0_dp
-emax = 200.0_dp
-
 !
 !  Read the input
 !
@@ -41,6 +36,7 @@ IF (crystal_name == "bSn") THEN
 ELSE
     CALL set_lattice(at, bg, 'fcc')
 END IF
+
 !
 ! set the coordinates of the mesh of k points
 !
@@ -55,11 +51,13 @@ CALL calculate_radius(ecut, xk, nks, gcutm2)
 ! sqrt(gcutm2)
 !
 CALL ggen(gcutm2)
+
 !
-! open the output file
+!   open output files
 !
 OPEN(unit=26,file='outputs/output',status='unknown',err=100,iostat=ios)
 100 IF (ios /= 0) STOP 'opening output'
+
 !
 !  For all k points compute and diagonalize the Hamiltonian
 !
@@ -67,29 +65,27 @@ ALLOCATE(rho(nir))
 rho=0.0_DP
 DO ik=1, nks
    IF (mod(ik,10)==0) write(6,*) ik, nks
+
 !
 !   set the Hamiltonian 
 !
    CALL set_hamiltonian(xk(:,ik), ecut)
+
 !
 !   and diagonalize it. nbnd bands are calculated.
 !
    CALL diagonalize(npw, nbnd, h, et, evc)
+
 !
 !  compute charge density
 !
    CALL accumulate_charge(evc, rho)
+
 !
 !  deallocate the Hamiltonian variables
 !
    CALL deallocate_hamiltonian()
 ENDDO
-
-!
-!   calculate the Fermi level
-!
-f_en = fermi_level(emin, emax, 0.1_dp)
-write (6,'("Fermi energy in units Ry / (2\pi/a)**2: ", f7.3)') f_en
 
 !
 !   write on output the charge density
@@ -107,6 +103,20 @@ ELSEIF (dimen==2) THEN
       ENDDO
    ENDDO
 ENDIF
+
+!
+!   calculate the Fermi level
+!
+f_en = fermi_level(emin, emax, 0.0001_dp)
+WRITE (6,'("Fermi energy in units Ry / (2\pi/a)**2: ", f7.4)') f_en
+
+!
+!   print bands
+!
+CALL print_bands()
+
 CALL deallocate_all()
+
 CLOSE(26)
 END PROGRAM cb_charge
+

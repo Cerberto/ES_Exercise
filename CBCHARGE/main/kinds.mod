@@ -1,4 +1,4 @@
-GFORTRAN module version '10' created from ../modules/kind.f90
+GFORTRAN module version '10' created from ../../global/kind.f90
 MD5:94f106f3cdd36737bdd64c787c51b9ce -- If you edit this, you'll get what you deserve.
 
 (() () () () () () () () () () () () () () () () () () () () () () () ()

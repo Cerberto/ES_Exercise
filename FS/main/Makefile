@@ -15,21 +15,21 @@ all: rmxeq cmpsc mkxeq rmpmk
 
 # main programs
 
-MAIN = free_dos
+MAIN = fs
 
 # required modules
 
-ROUTINES = freemod  gaussian  kgen  deallocate_all  input_free  ggen_free  \
-		set_hamiltonian
-
-GLOBAL = kind  constants  set_lattice  recips  \
-		calculate_radius  hpsort
+ROUTINES =  fsmod  diagonalize  ggen_cb \
+	set_hamiltonian  input_fs  deallocate_all \
+	deallocate_hamiltonian  set_cb_parameters  print_bands
+	
+GLOBAL = kind  constants  set_lattice  recips  calculate_radius
 
 MODULES = $(GLOBAL)  $(ROUTINES)
 
 # search path for modules
 
-MDIR = ../modules  ../../global
+MDIR = ../modules ../../global
 
 VPATH = $(MDIR)
 

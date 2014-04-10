@@ -21,7 +21,7 @@ MAIN = cb
 
 ROUTINES =  cbmod  diagonalize  ggen_cb \
 	set_hamiltonian  input_cb  deallocate_all \
-	deallocate_hamiltonian  set_cb_parameters
+	deallocate_hamiltonian  set_cb_parameters  fermi_level  form_factor
 	
 GLOBAL = kind  constants  set_lattice  recips  calculate_radius
 
