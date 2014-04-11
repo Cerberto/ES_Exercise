@@ -23,7 +23,7 @@ set label "V" at 1.395,dim1-small
 
 fact = 1.0
 #fact=13.605698
-emax=-0.0072 * fact
+emax=-0.0740 * fact
 #emax = 0
 set ylabel "Energy (Ry)"
 #set ylabel "Energy (eV)"

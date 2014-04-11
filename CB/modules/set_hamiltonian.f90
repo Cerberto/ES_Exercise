@@ -68,13 +68,12 @@ DO j=i+1,npw
     IF (crystal_name=="bSn") THEN
         dg(:) = g(:,igk(i)) - g(:,igk(j))
         dgsq  = dg(1)**2 + dg(2)**2 + dg(3)**2
-        IF (dgsq <= gcutm2) THEN
-            g_dot_tau = DOT_PRODUCT(dg(:),t(:)) * pi * 2.0_DP
-            ssg       = COS(g_dot_tau)
-            ssn       = SIN(g_dot_tau)
-            h(i,j)    = CMPLX(ssg*form_factor(dgsq),ssn*form_factor(dgsq))
-            ! h(j,i)    = CONJG(h(i,j))
-        END IF
+        
+        g_dot_tau = DOT_PRODUCT(dg(:),t(:)) * pi * 2.0_DP
+        ssg       = COS(g_dot_tau)
+        ssn       = SIN(g_dot_tau)
+        h(i,j)    = CMPLX(ssg*form_factor(dgsq),0.0_DP)
+        ! h(j,i)    = CONJG(h(i,j))
     ELSE
         !
         ! We have non vanishing terms only if |G-G'|^2 is not higher 

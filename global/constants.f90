@@ -13,6 +13,7 @@ MODULE constants
     PUBLIC 
     REAL(DP), PARAMETER :: pi=3.14159265358979323846_DP
     REAL(DP), PARAMETER :: aa_to_au=1.0_DP/0.52917720859_DP
+    REAL(DP), PARAMETER :: sqrt2 = 1.41421356237_DP
 
     ! tab characters (horizontal and vertical respectively)
     character, parameter :: htab = char(9)

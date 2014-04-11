@@ -10,7 +10,7 @@ USE cbmod, ONLY : h, evc, et, igk
 IMPLICIT NONE
 
 DEALLOCATE(h)
-DEALLOCATE(igk)
+!DEALLOCATE(igk)
 DEALLOCATE(evc)
 DEALLOCATE(et)
 

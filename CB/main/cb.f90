@@ -78,12 +78,6 @@ DO ik=1, nks
    CALL deallocate_hamiltonian()
 ENDDO
 
-!
-!   calculate the Fermi energy
-!
-f_en = fermi_level(emin, emax, 0.0001_dp)
-WRITE (6,'("Fermi energy in units Ry / (2\pi/a)**2: ", f7.4)') f_en
-
 CALL deallocate_all()
 CLOSE(26)
 END PROGRAM cb

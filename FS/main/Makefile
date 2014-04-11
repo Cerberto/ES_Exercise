@@ -21,7 +21,7 @@ MAIN = fs
 
 ROUTINES =  fsmod  diagonalize  ggen_cb \
 	set_hamiltonian  input_fs  deallocate_all \
-	deallocate_hamiltonian  set_cb_parameters  print_bands
+	deallocate_hamiltonian  set_cb_parameters  print_bands  form_factor
 	
 GLOBAL = kind  constants  set_lattice  recips  calculate_radius
 

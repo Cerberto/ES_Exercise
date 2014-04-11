@@ -14,6 +14,8 @@ PUBLIC
 
 CHARACTER(LEN=10) :: crystal_name ! The name of the crystal
 
+INTEGER :: check      ! Decide whether accumulating charge or not
+
 REAL(DP) :: alat      ! Size of the unit cell
 REAL(DP) :: ecut      ! Kinetic energy cut-off
 REAL(DP) :: gcutm2    ! Square of the radius of the G sphere
@@ -47,5 +49,7 @@ INTEGER :: nir_x, nir_y               ! two dimensional number of points
 REAL(DP), ALLOCATABLE :: ry(:)        ! ry coordinates of the plot
 
 INTEGER :: dimen                      ! dimensionality of the plot
+
+REAL(DP) :: sigma       ! width of the gaussian, smearing of the theta function
 
 END MODULE cbmod

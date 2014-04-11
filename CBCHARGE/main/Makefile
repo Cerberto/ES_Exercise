@@ -15,13 +15,13 @@ all: rmxeq cmpsc mkxeq rmpmk
 
 # main programs
 
-MAIN = cb_charge
+MAIN = cb_charge  error_function
 
 # required modules
 
 ROUTINES =  cbmod  accumulate_charge  kgen  ggen_cb\
 	deallocate_hamiltonian  diagonalize  input_cb  deallocate_all \
-	set_cb_parameters  set_hamiltonian  fermi_level
+	set_cb_parameters  set_hamiltonian  fermi_level  form_factor
 
 GLOBAL = kind  constants  set_lattice  recips  calculate_radius
 

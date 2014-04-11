@@ -19,13 +19,13 @@ subroutine print_bands ()
     !
     !   open output files
     !
-    do ibnd=1, nbnd_occ
+    do ibnd=1, nbnd
         write(output_filename,200) ibnd
         200  format('outputs/band_',i1)
         output_filename = trim(output_filename)
-        output_channel  = 30 + ibnd
+        output_channel  = 60 + ibnd
         open (unit=output_channel, file=output_filename, &
-            status='replace', action='write')
+            access='append', action='write')
     end do
     
     !----
@@ -43,9 +43,9 @@ subroutine print_bands ()
             !
             !   print bands for the current k-point
             !
-            do ibnd=1, nbnd_occ
-                output_channel = 30 + ibnd
-                write (output_channel,'(3f16.9)') kx(i), ky(j), et(ibnd)
+            do ibnd=1, nbnd
+                output_channel = 60 + ibnd
+                write (output_channel,'(3f16.9)') kx(i)-1.0_DP, ky(j), et(ibnd)
             end do
             call deallocate_hamiltonian()
         end do
@@ -55,7 +55,7 @@ subroutine print_bands ()
     !   close output files
     !
     do ibnd=1, nbnd_occ
-        output_channel = 30 + ibnd
+        output_channel = 60 + ibnd
         close(output_channel)
     end do
 

@@ -25,7 +25,7 @@ READ(5,*) crystal_name
 WRITE(6,'("Cut-off energy (units Ry / (2\pi /a )^2) ?")')
 READ(5,*) ecut
 
-WRITE(6,'("Number of bands?")') 
+WRITE(6,'("Number of bands?")')
 READ(5,*) nbnd
 
 WRITE(6,'("Number of k points?")') 

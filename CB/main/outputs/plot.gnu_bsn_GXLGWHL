@@ -3,7 +3,7 @@ set terminal postscript enhanced color font 'Helvetica,20'
 set output "bSn_GXLGWHL.ps"
 set key off
 
-#set xrange [0:1.41]
+set xrange [0:4.2323]
 #dim1=-3.5
 #dim2=2.5
 
@@ -18,7 +18,7 @@ set arrow from .7100,dim1 to 0.7100,dim2 nohead lw 2
 set arrow from 1.414,dim1 to 1.4201,dim2 nohead lw 2
 set arrow from 2.414,dim1 to 2.4142,dim2 nohead lw 2
 set arrow from 3.0483,dim1 to 3.0483,dim2 nohead lw 2
-set arrow from 3.5982,dim1 to 3.5982,dim2 nohead lw 2
+set arrow from 3.5846,dim1 to 3.5846,dim2 nohead lw 2
 
 set label "{/Symbol G}" at -.03,dim1-small
 set label "X" at 0.69,dim1-small
@@ -26,11 +26,11 @@ set label "L" at 1.40,dim1-small
 set label "{/Symbol G}" at 2.4,dim1-small
 set label "W" at 2.9,dim1-small
 set label "H" at 3.5,dim1-small
-set label "L" at 5.0,dim1-small
+set label "L" at 4.2,dim1-small
 
 fact = 1.0
 #fact=13.605698
-emax=-0.1200 * fact
+emax=-0.0740 * fact
 #emax = 0
 set ylabel "Energy (Ry)"
 #set ylabel "Energy (eV)"

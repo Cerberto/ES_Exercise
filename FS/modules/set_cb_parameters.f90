@@ -52,9 +52,6 @@ CASE ('InSb')
    cbi_parameters(11)=  0.01_DP
    alat = 6.48_DP * aa_to_au
 CASE ('bSn')
-   cbr_parameters(3) = -0.17_DP
-   cbr_parameters(8) =  0.01_DP
-   cbr_parameters(11)=  0.04_DP
    alat = 5.80_DP * aa_to_au
 CASE DEFAULT
    WRITE(6,*) 'set_cb_parameters'
